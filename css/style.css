@@ -1,0 +1,127 @@
+/* ===========================
+   Base / Mobile-First Styles
+   (< 768px)
+   =========================== */
+
+/* Global box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Base typography */
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+/* Body: light background, dark text – contrast ratio >= 4.5:1 WCAG AA */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333333;
+    line-height: 1.5;
+}
+
+/* Header: distinguishable background */
+header {
+    background-color: #1a237e;
+    color: #ffffff;
+    padding: 1.25rem 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Main content area */
+main {
+    padding: 1rem;
+}
+
+/* Sites list – remove default list styles, single column stacked layout */
+#sites-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Site cards: full width, rounded borders, visible shadow */
+.site-card {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+}
+
+/* Site name: bold, 1.25x base font size */
+.site-name {
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a237e;
+    text-decoration: none;
+}
+
+.site-name:hover,
+.site-name:focus {
+    text-decoration: underline;
+}
+
+/* Site description: base font size */
+.site-description {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: #333333;
+}
+
+/* Footer */
+footer {
+    background-color: #e8eaf6;
+    color: #333333;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Error message styling */
+.error-message {
+    background-color: #ffebee;
+    color: #b71c1c;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ===========================
+   Desktop Breakpoint Styles
+   (>= 768px)
+   =========================== */
+
+@media (min-width: 768px) {
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem;
+    }
+
+    #sites-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 16px;
+    }
+}
