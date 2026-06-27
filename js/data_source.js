@@ -148,17 +148,37 @@ class ApiManager {
                     descripcion:"Una plataforma para reunir a las mascotas perdidas con sus familias tras el terremoto"
                 },
                 {
-                    id:17,
+                    id:18,
                     nombre:"Patitas a Salvo - Mi Gente Ve",
                     url:"https://migenteve.com/",
                     descripcion:"Registra mascotas perdidas, encontradas o con necesidad médica después de un terremoto. La comunidad puede buscar por zona, compartir casos y ubicar reportes en el mapa."
                 },
                 {
-                    id:18,
+                    id:19,
                     nombre:"Intérpretes voluntarios EIM-UCV",
                     url:"https://docs.google.com/forms/d/e/1FAIpQLScXzwYRf6lJPfcJaKdAMDbeehH1pbMkU7QEq5UTSYOpWQubOQ/viewform",
                     descripcion:"Estamos organizando un equipo de intérpretes voluntarios para misiones internacionales de rescate"
+                },
+                {
+                    id:20,
+                    nombre:"Directorio De Iniciativas Ciudadanas",
+                    url:"https://redesayuda.org/iniciativasciudadanas/",
+                    descripcion:"lugar para registrar distintas iniciativas ciudadanas"
+                },
+                {
+                    id:21,
+                    nombre:"vzlayuda",
+                    url:"https://vzlayuda.com/",
+                    descripcion:"Encuentra o brinda ayuda cerca de ti. Sin cuentas, al instante."
+                },
+                {
+                    id:22,
+                    nombre:"Hazlo Hoy - Venezuela Ayuda",
+                    url:"https://terremoto.hazlohoy.org/",
+                    descripcion:"Conectando personas, familias y ayuda durante la emergencia"
                 }
+                
+
             ]
                
         };
