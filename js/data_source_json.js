@@ -2,109 +2,109 @@ const SOURCES = [
     {
         "id": 1,
         "nombre": "Hospitales en Venezuela",
-        "url": "https://hospitalesenvenezuela.com/",
+        "url": "https://hospitalesenvenezuela.com",
         "descripcion": "Aplicaci\u00f3n para encontrar a quien est\u00e1 ingresado en un hospital o centro de salud en Venezuela"
     },
     {
         "id": 2,
         "nombre": "Desaparecidos Terremoto Venezuela",
-        "url": "https://desaparecidosterremotovenezuela.com/",
+        "url": "https://desaparecidosterremotovenezuela.com",
         "descripcion": "Portal para reportar y buscar personas desaparecidas tras el terremoto en Venezuela"
     },
     {
         "id": 3,
         "nombre": "Venezuela Reporta",
-        "url": "https://venezuelareporta.org/",
+        "url": "https://venezuelareporta.org",
         "descripcion": "Plataforma para reportar y buscar personas desaparecidas en Venezuela"
     },
     {
         "id": 4,
         "nombre": "Venezuela Te Busca",
-        "url": "https://venezuelatebusca.com/",
+        "url": "https://venezuelatebusca.com",
         "descripcion": "Portal de b\u00fasqueda de personas desaparecidas tras el terremoto"
     },
     {
         "id": 5,
         "nombre": "Venezuela - Tiltely",
-        "url": "https://venezuela.tiltely.com/",
+        "url": "https://venezuela.tiltely.com",
         "descripcion": "Plataforma de reporte de personas desaparecidas"
     },
     {
         "id": 6,
         "nombre": "Terremoto Venezuela",
-        "url": "https://terremotovenezuela.com/",
+        "url": "https://terremotovenezuela.com",
         "descripcion": "Mapa centralizado de da\u00f1os estructurales reportados por ciudadanos tras el terremoto"
     },
     {
         "id": 7,
         "nombre": "Revisa Tu Edificio",
-        "url": "https://www.revisatuedificio.com/",
+        "url": "https://revisatuedificio.com",
         "descripcion": "Registro de ingenieros para inspecci\u00f3n de habitabilidad y evaluaci\u00f3n de da\u00f1os estructurales"
     },
     {
         "id": 8,
         "nombre": "Tilin App",
-        "url": "https://tilinapp.com/",
+        "url": "https://tilinapp.com",
         "descripcion": "Evaluaci\u00f3n de da\u00f1os estructurales e inspecci\u00f3n de habitabilidad"
     },
     {
         "id": 9,
         "nombre": "Habitable",
-        "url": "https://habitable.lovable.app/",
+        "url": "https://habitable.lovable.app",
         "descripcion": "Plataforma para evaluar la habitabilidad de edificios afectados"
     },
     {
         "id": 10,
         "nombre": "Rescate Venezuela",
-        "url": "https://rescate-ve.vercel.app/",
+        "url": "https://rescate-ve.vercel.app",
         "descripcion": "Coordinaci\u00f3n de apoyo presencial, rescate y log\u00edstica de transporte"
     },
     {
         "id": 11,
         "nombre": "Ayuda Para Venezuela",
-        "url": "https://ayudaparavenezuela.com/",
+        "url": "https://ayudaparavenezuela.com",
         "descripcion": "Centros de acopio e insumos requeridos por zona para los afectados"
     },
     {
         "id": 12,
         "nombre": "VeneConnect - Apoyo Terremoto",
-        "url": "https://www.veneconnect.com/apoyo-terremoto",
+        "url": "https://veneconnect.com/apoyo-terremoto",
         "descripcion": "Red de centros de acopio y apoyo para afectados por el terremoto"
     },
     {
         "id": 13,
         "nombre": "Zona Segura",
-        "url": "https://zonasegura.up.railway.app/",
+        "url": "https://zonasegura.up.railway.app",
         "descripcion": "Centros de acopio, refugios y alojamiento para afectados"
     },
     {
         "id": 14,
         "nombre": "Refugios Venezuela",
-        "url": "https://refugiosvenezuela.com/",
+        "url": "https://refugiosvenezuela.com",
         "descripcion": "Centros de alimentaci\u00f3n, refugios y alojamiento disponibles para los afectados"
     },
     {
         "id": 15,
         "nombre": "Pacientes Terremoto Venezuela",
-        "url": "https://pacientesterremotovzla.lovable.app/",
+        "url": "https://pacientesterremotovzla.lovable.app",
         "descripcion": "Consulta de pacientes ingresados en hospitales tras el terremoto"
     },
     {
         "id": 16,
         "nombre": "HuellasCan - Terremoto",
-        "url": "https://www.huellascan.com/terremoto",
+        "url": "https://huellascan.com/terremoto",
         "descripcion": "Informaci\u00f3n sobre mascotas perdidas y encontradas tras el terremoto"
     },
     {
         "id": 17,
         "nombre": "Mascotas por Venezuela",
-        "url": "https://www.mascotasporvenezuela.com",
+        "url": "https://mascotasporvenezuela.com",
         "descripcion": "Una plataforma para reunir a las mascotas perdidas con sus familias tras el terremoto"
     },
     {
         "id": 18,
         "nombre": "Patitas a Salvo - Mi Gente Ve",
-        "url": "https://migenteve.com/",
+        "url": "https://migenteve.com",
         "descripcion": "Registra mascotas perdidas, encontradas o con necesidad m\u00e9dica despu\u00e9s de un terremoto. La comunidad puede buscar por zona, compartir casos y ubicar reportes en el mapa."
     },
     {
@@ -116,19 +116,19 @@ const SOURCES = [
     {
         "id": 20,
         "nombre": "Directorio De Iniciativas Ciudadanas",
-        "url": "https://redesayuda.org/iniciativasciudadanas/",
+        "url": "https://redesayuda.org/iniciativasciudadanas",
         "descripcion": "lugar para registrar distintas iniciativas ciudadanas"
     },
     {
         "id": 21,
         "nombre": "vzlayuda",
-        "url": "https://vzlayuda.com/",
+        "url": "https://vzlayuda.com",
         "descripcion": "Encuentra o brinda ayuda cerca de ti. Sin cuentas, al instante."
     },
     {
         "id": 22,
         "nombre": "Hazlo Hoy - Venezuela Ayuda",
-        "url": "https://terremoto.hazlohoy.org/",
+        "url": "https://terremoto.hazlohoy.org",
         "descripcion": "Conectando personas, familias y ayuda durante la emergencia"
     },
     {
@@ -140,19 +140,19 @@ const SOURCES = [
     {
         "id": 24,
         "nombre": "Campa\u00f1a de Go Fund Me",
-        "url": "https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims",
+        "url": "https://gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims",
         "descripcion": "Emergency Relief for Venezuela Earthquake Victims"
     },
     {
         "id": 25,
         "nombre": "Dona - Yummy Rides",
-        "url": "https://dona.yummyrides.com/",
+        "url": "https://dona.yummyrides.com",
         "descripcion": "Campa\u00f1a de donaci\u00f3n por Yummy Rides"
     },
     {
         "id": 26,
         "nombre": "H\u00e9roes - Yummy Rides",
-        "url": "https://heroes.yummyrides.com/",
+        "url": "https://heroes.yummyrides.com",
         "descripcion": "brindando traslados a Personal de primera respuesta gratis desde y hacia donde sea necesario"
     },
     {
@@ -164,7 +164,7 @@ const SOURCES = [
     {
         "id": 28,
         "nombre": "Salud pro",
-        "url": "https://apoyo.salu.pro/",
+        "url": "https://apoyo.salu.pro",
         "descripcion": "Registro centralizado y gratuito de personas desaparecidas tras la cat\u00e1strofe."
     },
     {

@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import re
+from urllib.parse import urlparse, urlunparse
 
 DEFAULT_INPUT_PATH:str = "data_source_helper/new_sources.json"
 DEFALUT_PLAIN_DATA:str = "data_source_helper/plain_sources.json"
@@ -55,7 +56,24 @@ def normalize_texts(json_list:list)  -> list:
     return json_list
 
 def normalize_single_url(url:str) -> str:
-    return url.lower()
+    parsed = urlparse(url)
+    # 1. Eliminar fragmento
+    parsed = parsed._replace(fragment="")
+    # 2. Eliminar parámetros de consulta
+    parsed = parsed._replace(query="")
+    # 3. Eliminar prefijo www. del host (case-insensitive)
+    netloc = parsed.netloc
+    if netloc.lower().startswith("www."):
+        netloc = netloc[4:]
+    parsed = parsed._replace(netloc=netloc)
+    # 4. Eliminar barra final del path
+    path = parsed.path
+    if path.endswith("/"):
+        path = path.rstrip("/")
+    parsed = parsed._replace(path=path)
+    # 5. Convertir a minúsculas
+    result = urlunparse(parsed)
+    return result.lower()
 
 def normalize_urls(json_list:list) -> list:
     
@@ -65,7 +83,9 @@ def normalize_urls(json_list:list) -> list:
     return json_list
 
 def get_max_id(json_list:list) -> int:
-    return len(json_list)
+    if not json_list:
+        return 0
+    return max(item["id"] for item in json_list)
 
 def unique_source(json_list) -> dict:
     my_dict = {}
@@ -81,6 +101,14 @@ def build_new_entry(source:dict) -> dict:
         "descripcion": source["descripcion"]
     }
 
+def assign_consecutive_ids(new_entries: list, max_id: int) -> list:
+   
+    next_id = max_id
+    for entry in new_entries:
+        next_id = next_id + 1
+        entry["id"] = next_id
+    return new_entries
+
 if __name__ == "__main__":
 
     current_sources:list = read_current_source(DEFALUT_PLAIN_DATA)
@@ -95,15 +123,14 @@ if __name__ == "__main__":
     new_entries_source:list = normalize_texts(new_entries_source)
     unique_new_entries:dict = unique_source(new_entries_source)
     
-    next_id = max_id
-    
+    new_entries_to_add = []
     for key,value in unique_new_entries.items():
-        
         if (key not in unique_source_keys):
             new_entry = build_new_entry(value)
-            next_id = next_id + 1
-            new_entry["id"] = next_id
-            current_sources.append(new_entry)
+            new_entries_to_add.append(new_entry)
+    
+    assign_consecutive_ids(new_entries_to_add, max_id)
+    current_sources.extend(new_entries_to_add)
     
     update_plain_source(DEFALUT_PLAIN_DATA,current_sources)
     update_api_json_source(DEFAULT_OUTPUT_PATH,current_sources)
