@@ -143,6 +143,18 @@ class ApiManager {
                 },
                 {
                     id:17,
+                    nombre:"Mascotas por Venezuela",
+                    url:"https://www.mascotasporvenezuela.com",
+                    descripcion:"Una plataforma para reunir a las mascotas perdidas con sus familias tras el terremoto"
+                },
+                {
+                    id:17,
+                    nombre:"Patitas a Salvo - Mi Gente Ve",
+                    url:"https://migenteve.com/",
+                    descripcion:"Registra mascotas perdidas, encontradas o con necesidad médica después de un terremoto. La comunidad puede buscar por zona, compartir casos y ubicar reportes en el mapa."
+                },
+                {
+                    id:18,
                     nombre:"Intérpretes voluntarios EIM-UCV",
                     url:"https://docs.google.com/forms/d/e/1FAIpQLScXzwYRf6lJPfcJaKdAMDbeehH1pbMkU7QEq5UTSYOpWQubOQ/viewform",
                     descripcion:"Estamos organizando un equipo de intérpretes voluntarios para misiones internacionales de rescate"
