@@ -200,7 +200,14 @@ class ApiManager {
                     nombre:"Héroes - Yummy Rides",
                     url:"https://heroes.yummyrides.com/",
                     descripcion:"brindando traslados a Personal de primera respuesta gratis desde y hacia donde sea necesario"
-                }
+                },
+                {
+                    id:27,
+                    nombre:"Build for Venezuela",
+                    url:"https://build4venezuela.com/es",
+                    descripcion:"Una hackathon humanitaria para construir soluciones tech por Venezuela"
+                },
+                
                
             ]
                
