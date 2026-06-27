@@ -38,9 +38,11 @@ function main() {
    
    searchText.setOnValueChangeListener((value) => {
         
+        
         searchText.showLoading(true);
         apiManager.seachForSites({"textToSearch":value})
             .then((res) => {
+                viewManager.hideErrors();
                 viewManager.cleanView();
                 if(res?.data?.length > 0) {
                     viewManager.showResult(res.data);
@@ -51,6 +53,7 @@ function main() {
             })
             .catch((err) => {
                 console.error(err);
+                viewManager.hideErrors();
                 viewManager.cleanView();
                 viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
             })

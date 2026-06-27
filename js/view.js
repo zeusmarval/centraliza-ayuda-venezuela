@@ -57,12 +57,25 @@ class View {
         sitesList.appendChild(li);
     }
 
+    hideErrors() {
+        const sitesList = this.#rootView.querySelector('#sites-list');
+        const errors = sitesList ? sitesList.querySelectorAll('.error-message') : [];
+        errors.forEach((el) => el.remove());
+        
+        const mainErrors = this.#rootView.querySelector('main');
+        if (mainErrors) {
+            mainErrors.querySelectorAll('.error-message').forEach((el) => el.remove());
+        }
+    }
+
     showError(message) {
-        const main = this.#rootView.querySelector('main');
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.setAttribute('role', 'alert');
-        errorDiv.textContent = message;
-        main.appendChild(errorDiv);
+        const sitesList = this.#rootView.querySelector('#sites-list');
+        if (sitesList) {
+            const li = document.createElement('li');
+            li.className = 'error-message';
+            li.setAttribute('role', 'alert');
+            li.textContent = message;
+            sitesList.appendChild(li);
+        }
     }
 }
