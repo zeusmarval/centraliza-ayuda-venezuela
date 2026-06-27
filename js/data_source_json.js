@@ -277,5 +277,11 @@ const SOURCES = [
         "url": "https://web.ridery.app",
         "descripcion": "Viajes gratuitos a cl\u00ednicas y hospitales de Caracas y centros de recepci\u00f3n de ayuda humanitaria",
         "id": 46
+    },
+    {
+        "nombre": "SEO for Venezuela",
+        "url": "https://seoforvenezuela.com",
+        "descripcion": "Donate to one of the relief funds below, upload your receipt in the form, and I\u2019ll record you a personal 5-minute Loom audit of your website, in English or Spanish",
+        "id": 47
     }
 ]
