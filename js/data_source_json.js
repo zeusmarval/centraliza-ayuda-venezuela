@@ -175,5 +175,107 @@ const SOURCES = [
         "url": "https://crisisrelief.un.org/en/donate-venezuela-crisis",
         "descripcion": "Fondo humanitario de la ONU para la respuesta de emergencia",
         "id": 29
+    },
+    {
+        "nombre": "SOS Venezuela 2026",
+        "url": "https://sosvenezuela2026.com",
+        "descripcion": "Mapa colaborativo en vivo para reportar colapsos y da\u00f1os y buscar personas, con validaci\u00f3n comunitaria",
+        "id": 30
+    },
+    {
+        "nombre": "Encu\u00e9ntralos",
+        "url": "https://encuentralos.tecnosoft.dev",
+        "descripcion": "Reporte y b\u00fasqueda instant\u00e1nea de personas desaparecidas, sin registro; agrega refugios y puntos de donaci\u00f3n",
+        "id": 31
+    },
+    {
+        "nombre": "Venezuela Te Necesita",
+        "url": "https://venezuelatenecesita.com",
+        "descripcion": "Coordinaci\u00f3n de emergencia que combina centros de acopio por estado y b\u00fasqueda de desaparecidos",
+        "id": 32
+    },
+    {
+        "nombre": "Red de Emergencia VE",
+        "url": "https://redayudavenezuela.com",
+        "descripcion": "Red ciudadana para avisar \u00abestoy a salvo\u00bb, buscar personas y coordinar ayuda",
+        "id": 33
+    },
+    {
+        "nombre": "SismoAyuda VE",
+        "url": "https://sismoayudave.com",
+        "descripcion": "Ingenieros y arquitectos voluntarios eval\u00faan la habitabilidad de tu inmueble a partir de fotos, bajo est\u00e1ndares ATC-20 y EMS-98",
+        "id": 34
+    },
+    {
+        "nombre": "Caracas Ayuda",
+        "url": "https://caracasayuda.com",
+        "descripcion": "Mapa interactivo de agua, comida, refugios, hospitales y puntos de ayuda en Caracas, con caducidad autom\u00e1tica de los reportes",
+        "id": 35
+    },
+    {
+        "nombre": "Todos Con VZLA",
+        "url": "https://todosconvzla.com",
+        "descripcion": "Mapa ciudadano no partidista para reportar desaparecidos, da\u00f1os, refugios y puntos de ayuda",
+        "id": 36
+    },
+    {
+        "nombre": "Centros de Acopio Venezuela",
+        "url": "https://centrosayudavenezuela.org",
+        "descripcion": "Directorio buscable de centros de acopio activos por ciudad, organizaci\u00f3n o tipo de insumo",
+        "id": 37
+    },
+    {
+        "nombre": "C\u00e1ritas de Venezuela",
+        "url": "https://caritasvenezuela.org",
+        "descripcion": "Recepci\u00f3n y distribuci\u00f3n de donaciones (agua, alimentos, higiene, medicinas) a trav\u00e9s de la red de la Iglesia",
+        "id": 38
+    },
+    {
+        "nombre": "PsicoMapa / PsicoData (UCAB)",
+        "url": "https://psicodatavzla.ucab.edu.ve",
+        "descripcion": "Mapa de m\u00e1s de 100 organizaciones de atenci\u00f3n psicol\u00f3gica por estado; la UCAB ofrece adem\u00e1s primeros auxilios psicol\u00f3gicos gratuitos por tel\u00e9fono",
+        "id": 39
+    },
+    {
+        "nombre": "GlobalGiving \u2013 Venezuela Earthquake Relief Fund",
+        "url": "https://globalgiving.org/projects/venezuela-earthquake-relief-fund",
+        "descripcion": "Fondo internacional que canaliza donaciones a organizaciones locales de salud, refugio, agua y alimentos",
+        "id": 40
+    },
+    {
+        "nombre": "C\u00e1ritas Internationalis",
+        "url": "https://donate.caritas.org/venezuela",
+        "descripcion": "Donaciones internacionales para la respuesta de C\u00e1ritas Venezuela en terreno",
+        "id": 41
+    },
+    {
+        "nombre": "Catholic Relief Services (CRS)",
+        "url": "https://crs.org/donate/venezuela-earthquake",
+        "descripcion": "Donaciones internacionales canalizadas con C\u00e1ritas Venezuela: refugio, alimentos, agua y salud",
+        "id": 42
+    },
+    {
+        "nombre": "M\u00e9dicos del Mundo",
+        "url": "https://medicosdelmundo.org/donacion-ong/campana/terremoto-venezuela",
+        "descripcion": "Donaciones para atenci\u00f3n m\u00e9dica de emergencia con equipos presentes en el pa\u00eds",
+        "id": 43
+    },
+    {
+        "nombre": "International Medical Corps",
+        "url": "https://internationalmedicalcorps.org/emergency-response/venezuela-earthquakes",
+        "descripcion": "Donaciones para atenci\u00f3n m\u00e9dica de emergencia en terreno",
+        "id": 44
+    },
+    {
+        "nombre": "Yummy \u2013 SOS",
+        "url": "https://sos.yummyrides.com",
+        "descripcion": "Reporte de da\u00f1os con foto y ubicaci\u00f3n, m\u00e1s log\u00edstica solidaria: entregas gratuitas de agua, alimentos y medicinas",
+        "id": 45
+    },
+    {
+        "nombre": "Ridery",
+        "url": "https://web.ridery.app",
+        "descripcion": "Viajes gratuitos a cl\u00ednicas y hospitales de Caracas y centros de recepci\u00f3n de ayuda humanitaria",
+        "id": 46
     }
 ]
