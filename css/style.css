@@ -35,10 +35,22 @@ header {
     justify-content: space-between;
 }
 
+.header__title-group {
+    display: flex;
+    flex-direction: column;
+}
+
 header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
+}
+
+.header__subtitle {
+    margin: 0.25rem 0 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #ffffff;
 }
 
 /* Main content area */
