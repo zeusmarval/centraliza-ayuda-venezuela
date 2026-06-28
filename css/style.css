@@ -113,16 +113,15 @@ footer p {
 
 /* Fixed top wrapper */
 .fixed-top-wrapper {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
     width: 100%;
     z-index: 1000;
 }
 
-/* Spacer to compensate fixed header + search bar height */
+/* Spacer no longer needed with sticky positioning */
 .fixed-top-spacer {
-    height: 120px;
+    display: none;
 }
 
 /* Search bar */
