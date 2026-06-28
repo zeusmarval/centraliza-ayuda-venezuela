@@ -27,18 +27,22 @@ function main() {
             
         });
    
-        // =============================
+   // =========================
+   // ==== tag item view builder ===
+   // =========================
+   const tagItemViewBuilder = new TagItemViewBuilder({});
+
+   // =============================
    // ==== selected tag zone ======
    // =============================
    const selectedTagZone = new TagSelectedZone({
-
+       containerElement: document.getElementById('tags-selected-zone'),
+       tagItemViewBuilder: tagItemViewBuilder
    });
 
    // =========================
    // ====== side bar =========
    // =========================
-   const tagItemViewBuilder = new TagItemViewBuilder({});
-
    const sideBar = new SideBar({
        sidebarElement: document.getElementById('sidebar-nav'),
        overlayElement: document.querySelector('.sidebar-overlay'),
