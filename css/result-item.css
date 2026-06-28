@@ -51,6 +51,40 @@
 }
 
 /* ===========================
+   Tag Pills in Site Card
+   =========================== */
+
+/* Separator between description and tags */
+.site-card__separator {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 0.75rem 0;
+}
+
+/* Tags container: flex wrap with gap */
+.site-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+/* Individual tag pill */
+.site-card__tag {
+    display: inline-block;
+    background-color: #e8eaf6;
+    color: #3949ab;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ===========================
    Desktop Breakpoint – Result Items
    (>= 768px)
    =========================== */

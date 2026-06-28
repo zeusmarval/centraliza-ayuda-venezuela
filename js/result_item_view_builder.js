@@ -24,13 +24,51 @@ class ResultItemViewBuilder {
             li.appendChild(a);
         }
 
-        if (item.descripcion) {
+        const hasDescripcion = !!item.descripcion;
+
+        if (hasDescripcion) {
             const p = this.#rootView.createElement('p');
             p.className = 'site-description';
             p.textContent = item.descripcion;
             li.appendChild(p);
         }
 
+        // --- Tags section ---
+        const validTags = this.#getValidTags(item.tags);
+
+        if (validTags.length > 0) {
+            if (hasDescripcion) {
+                const hr = this.#rootView.createElement('hr');
+                hr.className = 'site-card__separator';
+                li.appendChild(hr);
+            }
+
+            const tagsContainer = this.#rootView.createElement('div');
+            tagsContainer.className = 'site-card__tags';
+            tagsContainer.setAttribute('role', 'list');
+            tagsContainer.setAttribute('aria-label', 'Tags');
+
+            for (const tag of validTags) {
+                const span = this.#rootView.createElement('span');
+                span.className = 'site-card__tag';
+                span.setAttribute('role', 'listitem');
+                span.textContent = tag;
+                if (tag.length > 25) {
+                    span.setAttribute('title', tag);
+                }
+                tagsContainer.appendChild(span);
+            }
+
+            li.appendChild(tagsContainer);
+        }
+
         return li;
+    }
+
+    #getValidTags(tags) {
+        if (!Array.isArray(tags)) {
+            return [];
+        }
+        return tags.filter(t => typeof t === 'string' && t.trim().length > 0);
     }
 }
