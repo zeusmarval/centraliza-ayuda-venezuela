@@ -85,7 +85,7 @@ class ApiManager {
 
         return { data: matches };
     }
-    
+
     #sites = () => {
 
         return SOURCES; 
@@ -107,12 +107,12 @@ class ApiManager {
         return tags;
     }
 
-    #siteGroupByTag(tags) {
+    #siteGroupByTag(searchTags) {
         
         this.#initSiteGroupByTag();
-
+        const tempResultSet = {};
         searchTags.forEach((tag) => {
-            let groupSite = this.#sitesByTag [tag];
+            let groupSite = this.#sitesByTag[tag];
             if(groupSite == null) {
                 groupSite = [];
             }
