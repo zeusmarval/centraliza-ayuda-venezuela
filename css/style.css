@@ -46,46 +46,6 @@ main {
     padding: 1rem;
 }
 
-/* Sites list – remove default list styles, single column stacked layout */
-#sites-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* Site cards: full width, rounded borders, visible shadow */
-.site-card {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    padding: 1rem;
-}
-
-/* Site name: bold, 1.25x base font size */
-.site-name {
-    display: inline-block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1a237e;
-    text-decoration: none;
-}
-
-.site-name:hover,
-.site-name:focus {
-    text-decoration: underline;
-}
-
-/* Site description: base font size */
-.site-description {
-    margin: 0.5rem 0 0;
-    font-size: 1rem;
-    color: #333333;
-}
-
 /* Footer */
 footer {
     background-color: #e8eaf6;
@@ -189,14 +149,6 @@ footer p {
     animation: spin 0.8s linear infinite;
 }
 
-/* No results message */
-.no-results-message {
-    text-align: center;
-    padding: 2rem;
-    color: #666;
-    font-size: 1rem;
-}
-
 /* ===========================
    Desktop Breakpoint Styles
    (>= 768px)
@@ -207,11 +159,5 @@ footer p {
         max-width: 1200px;
         margin: 0 auto;
         padding: 1.5rem 2rem;
-    }
-
-    #sites-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 16px;
     }
 }
