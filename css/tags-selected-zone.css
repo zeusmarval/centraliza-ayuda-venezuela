@@ -1,0 +1,34 @@
+/* ===========================
+   Tags Selected Zone
+   Grid de tags activos debajo del buscador
+   =========================== */
+
+.tags-selected-zone {
+    display: none;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-columns: 11rem;
+    grid-auto-flow: column;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Ajustar los botones dentro del grid */
+.tags-selected-zone .sidebar-tag-btn {
+    width: 100%;
+    white-space: nowrap;
+}
+
+/* Mobile: una sola fila con scroll horizontal para no tapar el listado */
+@media (max-width: 600px) {
+    .tags-selected-zone {
+        grid-template-rows: auto;
+        grid-auto-columns: max-content;
+    }
+
+    .tags-selected-zone .sidebar-tag-btn {
+        width: auto;
+    }
+}
