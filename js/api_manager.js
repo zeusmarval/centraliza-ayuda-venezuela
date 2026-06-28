@@ -3,6 +3,8 @@ class ApiManager {
 
     #apiSettings;
 
+    #sitesByTag = null;
+
     static METHODS = Object.freeze({
         "GET": "GET",
         "POST": "POST",
@@ -30,7 +32,7 @@ class ApiManager {
         return response.json();
         */
 
-        return this.#sites();
+        return { data: this.#sites() };
     }
 
     seachForSites = async (payload) => {
@@ -49,9 +51,9 @@ class ApiManager {
         sites.data.forEach((item) => {
 
             const searchArray = [];
-            const name = item.nombre || '';
-            const description = item.descripcion || '';
-            let tags = item.tags != null ? item.tags : [];
+            const name = item.nombre != null ? item.nombre:'';
+            const description = item.descripcion != null ? item.descripcion:'';
+            const tags = item.tags != null ? item.tags : [];
             searchArray.push(name);
             searchArray.push(description);
             searchArray.push(...tags);
@@ -67,8 +69,74 @@ class ApiManager {
         return { data: matches };
     }
 
+    getTags = async (payload) => {
+        
+        const tags = this.#tags();
+        return {data: tags}
+    }
+
+    getSitesByTag = async(payload) => {
+        
+        
+        if(this.#sitesByTag == null) {
+            this.#sitesByTag = {};
+            const allTags = this.#tags();
+            const sites = this.#sites();
+            allTags.forEach((tagItem) => {
+                
+                sites.forEach( (siteItem) => {
+                    const tags = siteItem.tags != null ? siteItem.tags : [];
+                    if( tags.includes(tagItem)) {
+                        let groupSite = this.#sitesByTag [tagItem];
+                        if(groupSite == null) {
+                            groupSite = []
+                        }
+                        groupSite.push(siteItem);
+                        this.#sitesByTag[tagItem] = groupSite;
+                    }
+                });
+            });
+        }
+
+        const tempResultSet = {};
+        const searchTags = payload.tagsForSearch != null ? payload.tagsForSearch : [];
+        
+        if(searchTags.length <= 0) {
+            return {data:this.#sites()};
+        }
+
+        searchTags.forEach((tag) => {
+            let groupSite = this.#sitesByTag [tag];
+            if(groupSite == null) {
+                groupSite = [];
+            }
+            groupSite.forEach((site) => {
+                tempResultSet[site.id] = site;
+            });
+        });
+        
+        const resultSet = Object.values(tempResultSet).sort((a,b) => a.id - b.id);
+        return {data:resultSet};
+    }
+
     #sites = () => {
 
-        return { data: SOURCES };
+        return SOURCES; 
+    }
+
+    #tags = () => {
+        
+        const sites = this.#sites();
+        
+        const allTags = sites
+            .map((item) => {
+                return item.tags != null ? item.tags : [];
+            })
+            .flatMap((item) => item)
+        ;
+
+        const tags = [...new Set(allTags)].sort();
+        
+        return tags;
     }
 }
