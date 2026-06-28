@@ -35,20 +35,37 @@ class ApiManager {
         return { data: this.#sites() };
     }
 
+    getTags = async (payload) => {
+        
+        const tags = this.#tags();
+        return {data: tags}
+    }
+
     seachForSites = async (payload) => {
 
-        const sites = this.#sites();
-        const matches = [];
+        
+        
         const textToSearch = payload.textToSearch != null ? payload.textToSearch : null;
-
-        if (textToSearch == null) {
-            return sites;
+        const selectedTags = payload.tags != null ? payload.tags : [];
+        
+        if (textToSearch == null && selectedTags.length <=0 ) {
+            return  { data:this.#sites()};
         }
 
+
+        const matches = [];
+        let sites;
+        if(selectedTags.length > 0) {
+            sites = this.#siteGroupByTag(searchTags);
+        }
+        else {
+            sites = this.#sites();
+        }
+        
         const escapedText = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const containtWordRegex = new RegExp(escapedText, "i");
 
-        sites.data.forEach((item) => {
+        sites.forEach((item) => {
 
             const searchArray = [];
             const name = item.nombre != null ? item.nombre:'';
@@ -68,57 +85,7 @@ class ApiManager {
 
         return { data: matches };
     }
-
-    getTags = async (payload) => {
-        
-        const tags = this.#tags();
-        return {data: tags}
-    }
-
-    getSitesByTag = async(payload) => {
-        
-        
-        if(this.#sitesByTag == null) {
-            this.#sitesByTag = {};
-            const allTags = this.#tags();
-            const sites = this.#sites();
-            allTags.forEach((tagItem) => {
-                
-                sites.forEach( (siteItem) => {
-                    const tags = siteItem.tags != null ? siteItem.tags : [];
-                    if( tags.includes(tagItem)) {
-                        let groupSite = this.#sitesByTag [tagItem];
-                        if(groupSite == null) {
-                            groupSite = []
-                        }
-                        groupSite.push(siteItem);
-                        this.#sitesByTag[tagItem] = groupSite;
-                    }
-                });
-            });
-        }
-
-        const tempResultSet = {};
-        const searchTags = payload.tagsForSearch != null ? payload.tagsForSearch : [];
-        
-        if(searchTags.length <= 0) {
-            return {data:this.#sites()};
-        }
-
-        searchTags.forEach((tag) => {
-            let groupSite = this.#sitesByTag [tag];
-            if(groupSite == null) {
-                groupSite = [];
-            }
-            groupSite.forEach((site) => {
-                tempResultSet[site.id] = site;
-            });
-        });
-        
-        const resultSet = Object.values(tempResultSet).sort((a,b) => a.id - b.id);
-        return {data:resultSet};
-    }
-
+    
     #sites = () => {
 
         return SOURCES; 
@@ -138,5 +105,46 @@ class ApiManager {
         const tags = [...new Set(allTags)].sort();
         
         return tags;
+    }
+
+    #siteGroupByTag(tags) {
+        
+        this.#initSiteGroupByTag();
+
+        searchTags.forEach((tag) => {
+            let groupSite = this.#sitesByTag [tag];
+            if(groupSite == null) {
+                groupSite = [];
+            }
+            groupSite.forEach((site) => {
+                tempResultSet[site.id] = site;
+            });
+        });
+        
+        const resultSet = Object.values(tempResultSet).sort((a,b) => a.id - b.id);
+        return resultSet;
+    }
+
+    #initSiteGroupByTag = () => {
+       
+        if(this.#sitesByTag == null) {
+            this.#sitesByTag = {};
+            const allTags = this.#tags();
+            const sites = this.#sites();
+            allTags.forEach((tagItem) => {
+                
+                sites.forEach( (siteItem) => {
+                    const tags = siteItem.tags != null ? siteItem.tags : [];
+                    if( tags.includes(tagItem)) {
+                        let groupSite = this.#sitesByTag [tagItem];
+                        if(groupSite == null) {
+                            groupSite = []
+                        }
+                        groupSite.push(siteItem);
+                        this.#sitesByTag[tagItem] = groupSite;
+                    }
+                });
+            });
+        }
     }
 }

@@ -4,7 +4,6 @@ class SideBar {
     #allTagsItems;
     #selectedItems = [];
 
-    // Campos privados para el menú lateral
     #sidebarElement;
     #overlayElement;
     #closeButtonElement;
@@ -33,7 +32,10 @@ class SideBar {
 
     setOnTagItemClickListener(listenerFunc) {
         this.#onTagItemClickListener = listenerFunc;
-        
+    }
+
+    getSelectedTags() {
+        return this.#selectedItems;
     }
 
     setTagItems(itemList) {

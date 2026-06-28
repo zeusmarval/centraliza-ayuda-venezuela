@@ -63,7 +63,11 @@ function main() {
         
         
         searchText.showLoading(true);
-        apiManager.seachForSites({"textToSearch":value})
+        const tags = sideBar.getSelectedTags();
+        apiManager.seachForSites({
+            "textToSearch":value,
+            "tags":tags
+        })
             .then((res) => {
                 viewManager.hideErrors();
                 viewManager.cleanView();
@@ -85,6 +89,33 @@ function main() {
             });
    });
 
+   sideBar.setOnTagItemClickListener((allTags) => {
+
+        const text = searchText.getText() == "" ? null:searchText.getText();
+        apiManager.seachForSites({
+            "textToSearch":text,
+            "tags":tags
+        })
+        .then((res) => {
+            viewManager.hideErrors();
+            viewManager.cleanView();
+            if(res?.data?.length > 0) {
+                viewManager.showResult(res.data);
+            }
+            else{
+                viewManager.showError("No se encontraron coincidencias.");
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            viewManager.hideErrors();
+            viewManager.cleanView();
+            viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
+        })
+        .finally(() => {
+            searchText.showLoading(false);
+        });
+   });
    
 }
 
