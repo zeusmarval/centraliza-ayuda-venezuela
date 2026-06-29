@@ -27,22 +27,44 @@ class Manager {
 
     setupSidebarTagsClick() {
         
-        this.#sideBar.setOnTagItemClickListener((allTags) => {
+        this.#sideBar.setOnTagItemClickListener((allSelectedTags) => {
 
             const text = this.#searchText.getText() == "" ? null:this.#searchText.getText();
-            this.#selectedTagZone.setSelectedTags(allTags);
-            this.#requestSites(text,allTags);
+            this.#selectedTagZone.setSelectedTags(allSelectedTags);
+            this.#requestSites(text,allSelectedTags);
         });
 
     }
 
     setupSeletedTagsZoneClick() {
 
-        this.#selectedTagZone.setOnRemoveTagListener((allSelectedItems) => {
+        this.#selectedTagZone.setOnRemoveTagListener((allSelectedTags) => {
 
             const text = this.#searchText.getText() == "" ? null:this.#searchText.getText();
-            this.#sideBar.updateSelectedItems(allSelectedItems);
-            this.#requestSites(text,allSelectedItems);
+            this.#sideBar.updateSelectedItems(allSelectedTags);
+            this.#requestSites(text,allSelectedTags);
+        });
+    }
+
+    setupItemListOnTagClick() {
+        this.#viewManager.setOnTagItemClickListener((tag, isSelected) => {
+            
+            const currentSelected = this.#sideBar.getSelectedTags() ?? [];
+            let resultTags;
+
+            if (isSelected) {
+                resultTags = currentSelected.includes(tag)
+                    ? [...currentSelected]
+                    : [...currentSelected, tag];
+            } else {
+                resultTags = currentSelected.filter(item => item !== tag);
+            }
+
+            this.#sideBar.updateSelectedItems(resultTags);
+            this.#selectedTagZone.setSelectedTags(resultTags);
+
+            const text = this.#searchText.getText() === "" ? null : this.#searchText.getText();
+            this.#requestSites(text, resultTags);
         });
     }
 
@@ -73,6 +95,7 @@ class Manager {
         })
             .then((res) => {
                 
+                this.#viewManager.setSelectedTags(tags);
                 this.#viewManager.hideErrors();
                 this.#viewManager.cleanView();
                 if(res?.data?.length > 0) {
@@ -155,6 +178,7 @@ function main() {
     manager.setupSearchTextChange();
     manager.setupSidebarTagsClick();
     manager.setupSeletedTagsZoneClick();
+    manager.setupItemListOnTagClick();
 }
 
 window.addEventListener("load", main);

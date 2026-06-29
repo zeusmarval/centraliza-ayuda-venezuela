@@ -89,6 +89,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+/* Tag pill – selected state (contrast ratio #ffffff on #1a237e ≈ 12.6:1, WCAG AA compliant) */
+.site-card__tag--selected {
+    background-color: #1a237e;
+    color: #ffffff;
 }
 
 /* ===========================

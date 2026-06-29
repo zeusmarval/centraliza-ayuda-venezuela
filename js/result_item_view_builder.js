@@ -1,18 +1,29 @@
 class ResultItemViewBuilder {
 
+    #selectedTags;
     #rootView;
 
     constructor(config) {
         this.#rootView = config.rootView;
     }
 
-    buildItemView(item) {
+    setSelectedTags(tags) {
+        this.#selectedTags = Array.isArray(tags) ? [...tags] : [];
+    }
+
+
+    buildItemView(item, selectedTags) {
         const li = this.#rootView.createElement('li');
         li.className = 'site-card';
 
         if (!item || typeof item !== 'object' || Array.isArray(item)) {
             return li;
         }
+
+        // Determine which selectedTags to use: parameter takes precedence, then internal state
+        const effectiveTags = arguments.length >= 2
+            ? (Array.isArray(selectedTags) ? selectedTags : [])
+            : (Array.isArray(this.#selectedTags) ? this.#selectedTags : []);
 
         if (item.nombre && item.url) {
             const a = this.#rootView.createElement('a');
@@ -49,9 +60,20 @@ class ResultItemViewBuilder {
 
             for (const tag of validTags) {
                 const span = this.#rootView.createElement('span');
-                span.className = 'site-card__tag';
-                span.setAttribute('role', 'listitem');
+                span.setAttribute('role', 'button');
+                span.setAttribute('tabindex', '0');
+                span.dataset.tag = tag;
                 span.textContent = tag;
+
+                const isSelected = effectiveTags.some(
+                    st => st.trim().toLowerCase() === tag.trim().toLowerCase()
+                );
+
+                span.className = isSelected
+                    ? 'site-card__tag site-card__tag--selected'
+                    : 'site-card__tag';
+                span.setAttribute('aria-pressed', String(isSelected));
+
                 if (tag.length > 25) {
                     span.setAttribute('title', tag);
                 }

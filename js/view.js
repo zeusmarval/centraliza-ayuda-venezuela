@@ -2,12 +2,20 @@ class View {
 
     #rootView;
     #resultItemViewBuilder;
+    #onTagItemClickListener;
+    
 
     constructor(rootView, config) {
         this.#rootView = rootView;
         this.#resultItemViewBuilder = config && config.resultItemViewBuilder
             ? config.resultItemViewBuilder
             : null;
+
+        const sitesList = this.#rootView.querySelector('#sites-list');
+        if (sitesList) {
+            sitesList.addEventListener('click', (e) => this.#handleTagInteraction(e));
+            sitesList.addEventListener('keydown', (e) => this.#handleTagKeydown(e));
+        }
     }
 
     cleanView() {
@@ -30,6 +38,37 @@ class View {
         for (const site of data) {
             const li = this.#resultItemViewBuilder.buildItemView(site);
             sitesList.appendChild(li);
+        }
+    }
+
+    setSelectedTags(tags) {
+        const safeTags = Array.isArray(tags) ? [...tags] : [];
+        this.#resultItemViewBuilder.setSelectedTags(safeTags);
+    }
+
+    setOnTagItemClickListener(listenerFunc) {
+        this.#onTagItemClickListener = listenerFunc;
+    }
+
+    #handleTagInteraction(event) {
+        const tagEl = event.target.closest('.site-card__tag');
+        if (!tagEl) return;
+        const tagName = tagEl.dataset.tag;
+        const isCurrentlySelected = tagEl.classList.contains('site-card__tag--selected');
+        if (this.#onTagItemClickListener) {
+            this.#onTagItemClickListener(tagName, !isCurrentlySelected);
+        }
+    }
+
+    #handleTagKeydown(event) {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        const tagEl = event.target.closest('.site-card__tag');
+        if (!tagEl) return;
+        event.preventDefault();
+        const tagName = tagEl.dataset.tag;
+        const isCurrentlySelected = tagEl.classList.contains('site-card__tag--selected');
+        if (this.#onTagItemClickListener) {
+            this.#onTagItemClickListener(tagName, !isCurrentlySelected);
         }
     }
 
