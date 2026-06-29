@@ -24,9 +24,7 @@ class ResultItemViewBuilder {
             li.appendChild(a);
         }
 
-        const hasDescripcion = !!item.descripcion;
-
-        if (hasDescripcion) {
+        if (item.descripcion) {
             const p = this.#rootView.createElement('p');
             p.className = 'site-description';
             p.textContent = item.descripcion;
@@ -37,11 +35,12 @@ class ResultItemViewBuilder {
         const validTags = this.#getValidTags(item.tags);
 
         if (validTags.length > 0) {
-            if (hasDescripcion) {
-                const hr = this.#rootView.createElement('hr');
-                hr.className = 'site-card__separator';
-                li.appendChild(hr);
-            }
+            const tagsWrapper = this.#rootView.createElement('div');
+            tagsWrapper.className = 'site-card__tags-wrapper';
+
+            const hr = this.#rootView.createElement('hr');
+            hr.className = 'site-card__separator';
+            tagsWrapper.appendChild(hr);
 
             const tagsContainer = this.#rootView.createElement('div');
             tagsContainer.className = 'site-card__tags';
@@ -59,7 +58,8 @@ class ResultItemViewBuilder {
                 tagsContainer.appendChild(span);
             }
 
-            li.appendChild(tagsContainer);
+            tagsWrapper.appendChild(tagsContainer);
+            li.appendChild(tagsWrapper);
         }
 
         return li;

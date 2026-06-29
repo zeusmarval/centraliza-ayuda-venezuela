@@ -19,6 +19,13 @@
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tags wrapper: empuja la sección de tags al fondo de la tarjeta */
+.site-card__tags-wrapper {
+    margin-top: auto;
 }
 
 /* Site name: bold, 1.25x base font size */
