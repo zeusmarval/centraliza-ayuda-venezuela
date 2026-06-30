@@ -95,7 +95,10 @@ def normalize_single_url(url:str) -> str:
         query=query,
         fragment=fragment
     )
-    return urlunparse(normalized_parsed)
+    result = urlunparse(normalized_parsed)
+    if result.endswith('/'):
+        result = result.rstrip('/')
+    return result
 
 def normalize_urls(json_list:list) -> list:
     for item in json_list:
