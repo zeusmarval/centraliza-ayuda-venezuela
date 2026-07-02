@@ -2112,5 +2112,125 @@ const SOURCES = [
             "Mascotas"
         ],
         "id": 218
+    },
+    {
+        "nombre": "Donaciones a Comunidad Fighting Venezuela (Tekken, Smash, Street Fighter, Mortal Kombat, etc)",
+        "url": "https://gofundme.com/f/venezuela-fg-community-earthquake-relief?attribution_id=sl%3A008827d3-624c-4b82-9800-5bdb12708a6c&lang=en_US&ts=1782693613",
+        "descripcion": "Apoyar en los gastos iniciales de las viviendas de los jugadores de la comunidad que han perdido su hogar y puedan pagar el alquiler de la vivienda nueva, servicios básicos como luz, internet, gas, agua, medicinas, comida. Además de los pagos funerarios de los que fallecieron",
+        "tags": [
+            "Donaciones"
+        ],
+        "id": 219
+    },
+    {
+        "nombre": "Reportes de Daños por Microsoft AI for Good - HUMANITARIAN DATA EXCHANGE (HDX)",
+        "url": "https://data.humdata.org/event/venezuela-earthquake",
+        "descripcion": "Dataset y Reportes Técnicos de Daños verificados ocasionados por el terremoto",
+        "tags": [
+            "Recursos y Herramientas",
+            "Daños Estructurales"
+        ],
+        "id": 220
+    },
+    {
+        "nombre": "Pa’Lante | Una red ciudadana",
+        "url": "https://palantevenezuela.org",
+        "descripcion": "Conecta necesidades con quienes pueden ayudar: registro de voluntarios y profesionales, casos urgentes, albergues y sus necesidades, mapa en vivo y movilización por WhatsApp. Enlaza a las plataformas de personas no localizadas.",
+        "tags": [
+            "Refugios",
+            "Ayuda General",
+            "Centros de Acopio",
+            "Voluntarios"
+        ],
+        "id": 221
+    },
+    {
+        "nombre": "Iniciativa de Voluntarios | Topos Digitales",
+        "url": "https://whatsapp.com/channel/0029VbCq1745Ui2cD3SHpc24",
+        "descripcion": "Nuestra misión es llevar la información hasta las víctimas del terremoto. Aquí centralizaremos enlaces, plataformas, hospitales, centros de acopio, recursos y actualizaciones para que cada voluntario pueda ayudar directamente a las familias en los grupos de WhatsApp de las comunidades afectadas. No esperes que las víctimas lleguen a la información. Ve tú hacia ellas.",
+        "tags": [
+            "Refugios",
+            "Ayuda General",
+            "Voluntarios"
+        ],
+        "id": 222
+    },
+    {
+        "nombre": "Red de esperanza",
+        "url": "https://red-de-esperanza-lime.vercel.app",
+        "descripcion": "Sitio web en dónde puedes ver en el mapa personas desaparecidas de cada zona, y se puede reportar específicamente qué se necesita en cada lugar del mapa (rescates, medicinas, comida) en tiempo real. Incluye un chat de conversación por cada uno de los estados del país.",
+        "tags": [
+            "Desaparecidos",
+            "Servicios",
+            "Ayuda General",
+            "Centros de Acopio",
+            "Recursos y Herramientas"
+        ],
+        "id": 223
+    },
+    {
+        "nombre": "Campaña de Donación para Desplegar Puntos de Conexión a Internet y Recarga de Celulares | VESinFiltro y Asociación Conexión Segura y Libre",
+        "url": "https://gofundme.com/f/internet-for-rescuers-and-earthquake-victims-in-venezuela",
+        "descripcion": "Ayúdanos a desplegar más puntos de internet satelital con generadores para recargar celulares, al servicio de rescatistas, médicos, voluntarios y los afectados del terremoto. Tu donación ayudará a cubrir equipos de internet satelital, planes de servicio, generadores, baterías o combustible, logística y transporte.",
+        "tags": [
+            "Donaciones"
+        ],
+        "id": 224
+    },
+    {
+        "nombre": "Dona Venezuela",
+        "url": "https://donavenezuela.com",
+        "descripcion": "Canaliza ayuda monetaria hacia organizaciones humanitarias verificadas tras el terremoto. Plataforma Aliada de Cáritas, Fe y Alegría y Regnum de Christi Venezuela.",
+        "tags": [
+            "Donaciones"
+        ],
+        "id": 225
+    },
+    {
+        "nombre": "Centros de Acopio a nivel Internacional | Centros de Acopio VZLA",
+        "url": "https://centrosdeacopiovzla.com",
+        "descripcion": "Directorio abierto a nivel internacional para apoyar tras los dos sismos de magnitud 7.2 y 7.5 del 24 de junio en venezuela. Elige tu país, y tu estado para ver los centros activos, qué reciben y cómo llegar.",
+        "tags": [
+            "Centros de Acopio"
+        ],
+        "id": 226
+    },
+    {
+        "nombre": "Censo de emergencia: Población TEA afectada por el terremoto (24 de junio de 2026)",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSd8J8QcqHyNAu2ryh5Mxht2lT39UCg-i0O6Lzue9Mmsk_G5dg/viewform",
+        "descripcion": "Este censo tiene como objetivo identificar y priorizar la atención de personas con Trastorno del Espectro Autista (TEA) y sus familias afectadas por el reciente sismo. La información recolectada será canalizada con brigadas de búsqueda, cuerpos de salud, apoyo psicológico e insumos de regulación sensorial. Por favor, complete los datos con la mayor precisión posible.",
+        "tags": [
+            "Ayuda General",
+            "Psicología"
+        ],
+        "id": 227
+    },
+    {
+        "nombre": "LAEnvíos | Traslado Gratuito de Paquetes de Donaciones En Venezuela para Ayudar",
+        "url": "https://instagram.com/p/DaAzCRKFX5C",
+        "descripcion": "Tras el reciente Terremoto, nuestros hermanos en Caracas y La Guaira nos necesitan más que nunca. En LAE ponemos a disposición toda nuestra flota nacional para trasladar tus donaciones de forma rápida y completamente gratuita hasta las zonas afectadas. ¿Cómo puedes apoyar? Acércate a cualquiera de nuestras sedes receptoras a nivel nacional y dona",
+        "tags": [
+            "Transporte y Logística"
+        ],
+        "id": 228
+    },
+    {
+        "nombre": "Atención Psicológica Gratuita y Recursos Varios | Grupo Sinapsis",
+        "url": "https://gsinapsis.com/terremoto-venezuela-intervencion-crisis",
+        "descripcion": "Atención Psicológica Gratuita, Recursos de Contención y Afrontamiento Emocional. Guía de Intervención.",
+        "tags": [
+            "Psicología"
+        ],
+        "id": 229
+    },
+    {
+        "nombre": "RESCATEVENEZUELA Registro de personas desaparecidas",
+        "url": "https://rescatevenezuela.info",
+        "descripcion": "Iniciativa ciudadana 100% independiente, no vinculada a ningún ente gubernamental ni partido político. Red de apoyo a la localización y reunificación de personas desaparecidas durante situaciones de emergencia con equipos de rescate.",
+        "tags": [
+            "Desaparecidos",
+            "Rescate y Apoyo Físico"
+        ],
+        "id": 230
     }
 ]
