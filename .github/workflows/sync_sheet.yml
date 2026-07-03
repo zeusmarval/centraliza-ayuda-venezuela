@@ -1,0 +1,62 @@
+name: Sync Google Sheets Data
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Checkout or create automatic_sync branch
+        run: |
+          set -e
+          if git ls-remote --heads origin automatic_sync | grep -q automatic_sync; then
+            git checkout automatic_sync
+            git pull origin automatic_sync
+          else
+            git checkout -b automatic_sync
+          fi
+
+      - name: Merge master into automatic_sync
+        uses: emiliopedrollo/auto-merge@v1.2.0
+        with:
+          target_branch: automatic_sync
+          source_branch: master
+          strategy_option: theirs
+
+      - name: Run sync script
+        timeout-minutes: 2
+        run: python merge_sources.py
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ github.token }}
+          commit-message: "sync: ${{ github.run_id }}"
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch: automatic_sync
+          base: master
+          title: "sync: ${{ github.run_id }}"
+          body: |
+            Sincronización automática de fuentes de datos.
+            Archivos actualizados:
+            - `data_source_helper/plain_sources.json`
+            - `js/data_source_json.js`
+          add-paths: |
+            data_source_helper/plain_sources.json
+            js/data_source_json.js
