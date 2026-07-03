@@ -2,7 +2,25 @@
 //Añadir nuevas fuente en el arreglo data_source_helper/new_sources.json
 //luego ejecutar merge_sources.py
 const SOURCES = [
-    
+    {
+        "nombre": "Acopio VZLA",
+        "url": "https://acopiovzla.com",
+        "descripcion": "Directorio de centros de acopios a nivel nacional e internacional.",
+        "tags": [
+            "Refugios",
+            "Centros de Acopio"
+        ],
+        "id": 291
+    },
+    {
+        "nombre": "Acopios Refugios - Venezuela Resiste",
+        "url": "https://acopios-refugios.vercel.app",
+        "descripcion": "Mapa colaborativo de Acopios y Refugios. Acopios se publican al instante con sello \"sin verificar\". Refugios se revisan antes.",
+        "tags": [
+            "Centros de Acopio"
+        ],
+        "id": 290
+    },
     {
         "nombre": "AcopioVE",
         "url": "https://acopiove.org",
