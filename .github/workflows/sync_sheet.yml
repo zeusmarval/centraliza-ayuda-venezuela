@@ -42,8 +42,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Merge master into automatic_sync
-        run: git merge master -X theirs --no-edit
+      - name: Reset automatic_sync to master
+        run: git reset --hard master
 
       - name: Run sync script
         timeout-minutes: 2
