@@ -13,7 +13,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -33,11 +33,7 @@ jobs:
           fi
 
       - name: Merge master into automatic_sync
-        uses: emiliopedrollo/auto-merge@v1.2.0
-        with:
-          target_branch: automatic_sync
-          source_branch: master
-          strategy_option: theirs
+        run: git merge master -X theirs --no-edit
 
       - name: Run sync script
         timeout-minutes: 2
