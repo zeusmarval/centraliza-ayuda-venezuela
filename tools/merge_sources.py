@@ -132,6 +132,28 @@ def assign_consecutive_ids(new_entries: list, max_id: int) -> list:
         entry["id"] = next_id
     return new_entries
 
+def update_all_fields(current:list,new_source:list) -> list:
+    
+    current_as_dict = {}
+    for item in current:
+        key = item["url"]
+        current_as_dict[key] = item
+    
+    current_as_dict.pop("https://kevinesaa.github.io/centraliza-ayuda-venezuela")
+
+    for new_item in new_source:
+        url_key = new_item["url"]
+        element = current_as_dict.get(url_key)
+        if(element is not None):
+            element["nombre"] = new_item["nombre"]
+            element["descripcion"] = new_item["descripcion"]
+            element["tags"] = new_item["tags"]
+        
+    return list(current_as_dict.values())
+
+
+def get_lower_name(entry:dict):
+        return entry.get("nombre", "").lower()
 
 def merge_sources():
 
@@ -155,6 +177,10 @@ def merge_sources():
     
     assign_consecutive_ids(new_entries_to_add, max_id)
     current_sources.extend(new_entries_to_add)
+    
+    current_sources:list = update_all_fields(current_sources,new_entries_source)
+    
+    current_sources.sort(key=get_lower_name)
     
     update_plain_source(commons.DEFALUT_PLAIN_DATA,current_sources)
     update_api_json_source(commons.DEFAULT_OUTPUT_PATH,current_sources)

@@ -3,6 +3,7 @@ class ApiManager {
 
     #apiSettings;
 
+    #allUniqueTags = null;
     #sitesByTag = null;
 
     static METHODS = Object.freeze({
@@ -60,26 +61,18 @@ class ApiManager {
             return  { data:sites};
         }
         
-        const matches = [];
-        const escapedText = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const escapedText = this.#normalizeText(textToSearch);
         const containtWordRegex = new RegExp(escapedText, "i");
+        
+        const matches = sites.filter((item) => {
+            
+            const name = item.nombre ?? '';
+            const description = item.descripcion ?? '';
+            const tags = item.tags ?? [];
 
-        sites.forEach((item) => {
-
-            const searchArray = [];
-            const name = item.nombre != null ? item.nombre:'';
-            const description = item.descripcion != null ? item.descripcion:'';
-            const tags = item.tags != null ? item.tags : [];
-            searchArray.push(name);
-            searchArray.push(description);
-            searchArray.push(...tags);
-
-            for (const searchTerm of searchArray) {
-                if (containtWordRegex.test(searchTerm)) {
-                    matches.push(item);
-                    break;
-                }
-            }
+            return containtWordRegex.test(this.#normalizeText(name)) ||
+                   containtWordRegex.test(this.#normalizeText(description)) ||
+                   tags.some((tag) => containtWordRegex.test(this.#normalizeText(tag)));
         });
 
         return { data: matches };
@@ -92,18 +85,19 @@ class ApiManager {
 
     #tags = () => {
         
-        const sites = this.#sites();
-        
-        const allTags = sites
-            .map((item) => {
-                return item.tags != null ? item.tags : [];
-            })
-            .flatMap((item) => item)
-        ;
+        if(this.#allUniqueTags==null){
+            const sites = this.#sites();
+            
+            const allTags = sites
+                .map((item) => {
+                    return item.tags != null ? item.tags : [];
+                })
+                .flatMap((item) => item)
+            ;
 
-        const tags = [...new Set(allTags)].sort();
-        
-        return tags;
+            this.#allUniqueTags = [...new Set(allTags)].sort();
+        }
+        return this.#allUniqueTags;
     }
 
     #siteGroupByTag(searchTags) {
@@ -145,5 +139,19 @@ class ApiManager {
                 });
             });
         }
+    }
+
+    
+    #normalizeText = (text) => {
+        
+        const withoutDiacritics = text
+            .replace(/ñ/g, '\u0000ñ')
+            .replace(/Ñ/g, '\u0000Ñ')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\u0000ñ/g, 'ñ')
+            .replace(/\u0000Ñ/g, 'Ñ');
+        
+        return withoutDiacritics.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 }
