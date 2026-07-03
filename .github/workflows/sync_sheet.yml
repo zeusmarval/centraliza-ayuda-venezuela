@@ -16,34 +16,11 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: master
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
-      - name: start in master
-        run: |
-          git checkout master
-          git pull --no-rebase origin master
-      
-      - name: Checkout or create automatic_sync branch
-        run: |
-          set -e
-          if git ls-remote --heads origin automatic_sync | grep -q automatic_sync; then
-            git checkout automatic_sync
-            git pull --no-rebase origin automatic_sync
-          else
-            git checkout -b automatic_sync
-          fi
-
-      - name: Configure git identity
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Reset automatic_sync to master
-        run: git reset --hard master
 
       - name: Run sync script
         timeout-minutes: 2
