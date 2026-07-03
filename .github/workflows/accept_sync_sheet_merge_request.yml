@@ -12,22 +12,21 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.ref == 'automatic_sync'
+    # Solo PRs de sincronización creados por el bot con el título esperado.
+    if: >
+      github.event.pull_request.head.ref == 'automatic_sync' &&
+      github.event.pull_request.user.login == 'github-actions[bot]' &&
+      startsWith(github.event.pull_request.title, 'sync: ')
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Auto-merge sync PR
+      - name: Enable native auto-merge
         env:
           GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
         run: |
-          python tools/auto_merge_sync_pr.py \
-            "${{ github.event.pull_request.number }}" \
-            "${{ github.event.pull_request.head.ref }}" \
-            "${{ github.event.pull_request.base.ref }}" \
-            "${{ github.event.pull_request.user.login }}" \
-            "${{ github.event.pull_request.title }}" \
-            "${{ github.repository }}"
+          # Auto-merge nativo: GitHub mergea el PR cuando se cumplan los
+          # requisitos (checks/reviews). Evita el 422 de "no puedes aprobar
+          # tu propio PR" porque el bot ya no aprueba nada.
+          # Fallback a merge directo si el repo no tiene "Allow auto-merge".
+          gh pr merge "$PR" --repo "$REPO" --merge --auto \
+            || gh pr merge "$PR" --repo "$REPO" --merge
