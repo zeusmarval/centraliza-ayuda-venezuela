@@ -22,15 +22,20 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: start in master
+        run: |
+          git checkout master
+          git pull -a origin master
+      
       - name: Checkout or create automatic_sync branch
         run: |
           set -e
           if git ls-remote --heads origin automatic_sync | grep -q automatic_sync; then
             git checkout automatic_sync
-            git pull origin automatic_sync
           else
             git checkout -b automatic_sync
           fi
+          git pull -a origin automatic_sync
 
       - name: Merge master into automatic_sync
         run: git merge master -X theirs --no-edit
