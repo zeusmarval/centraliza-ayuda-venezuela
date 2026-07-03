@@ -37,6 +37,11 @@ jobs:
             git checkout -b automatic_sync
           fi
 
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Merge master into automatic_sync
         run: git merge master -X theirs --no-edit
 
