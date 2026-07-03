@@ -120,31 +120,21 @@ def main(pr_data:dict, api_config:dict) -> int:
         print(f"::notice::PR #{pr_data['pr_number']} is already {state}. Skipping.")
         return 0
 
-    # 3. Approve
-    try:
-        retry(lambda: approve_pr(pr_data["pr_number"], api_config))
-    except urllib.error.HTTPError as e:
-        if e.code == 403:
-            print(f"::error::Permission denied during approval (403)")
-        else:
-            print(f"::error::Approval failed: HTTP {e.code}")
-        return 1
-    except Exception as e:
-        print(f"::error::Approval failed: {e}")
-        return 1
-
-    # 4. Merge
+    # 3. Merge (approval skipped — GITHUB_TOKEN cannot approve its own PR)
     commit_msg = format_commit_message(pr_data["title"], pr_data["pr_number"])
     merge_data = {"pr_number": pr_data["pr_number"], "commit_message": commit_msg}
     try:
         retry(lambda: merge_pr(merge_data, api_config))
     except urllib.error.HTTPError as e:
-        print(f"::error::Approval succeeded but merge failed: HTTP {e.code}")
         if e.code == 409:
-            print("::error::Merge failed due to conflicts (409)")
+            print(f"::error::Merge failed due to conflicts (409)")
+        elif e.code == 403:
+            print(f"::error::Permission denied during merge (403)")
+        else:
+            print(f"::error::Merge failed: HTTP {e.code}")
         return 1
     except Exception as e:
-        print(f"::error::Approval succeeded but merge failed: {e}")
+        print(f"::error::Merge failed: {e}")
         return 1
 
     print(f"::notice::PR #{pr_data['pr_number']} merged successfully.")
