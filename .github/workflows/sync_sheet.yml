@@ -27,6 +27,7 @@ jobs:
         run: python merge_sources.py
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ github.token }}
@@ -43,3 +44,16 @@ jobs:
           add-paths: |
             data_source_helper/plain_sources.json
             js/data_source_json.js
+
+      # Los PRs creados con GITHUB_TOKEN no disparan otros workflows
+      # (pull_request/pull_request_target), por lo que el auto-merge se
+      # activa aquí mismo en lugar de depender de un workflow separado.
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.cpr.outputs.pull-request-number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh pr merge "$PR" --repo "$REPO" --merge --auto \
+            || gh pr merge "$PR" --repo "$REPO" --merge
